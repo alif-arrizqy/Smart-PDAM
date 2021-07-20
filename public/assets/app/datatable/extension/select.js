@@ -1,0 +1,1 @@
+"use strict";$(function(){$("#datatable-1").DataTable({responsive:!0,select:!0}),$("#datatable-2").DataTable({responsive:!0,select:{style:"multi"}}),$("#datatable-3").DataTable({responsive:!0,select:{style:"os",items:"cell"}})});

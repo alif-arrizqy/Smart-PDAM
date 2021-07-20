@@ -1,0 +1,1 @@
+"use strict";$(function(){$("#datatable-1").DataTable({responsive:!0,dom:"Pfrtip",searchPanes:{cascadePanes:!0,viewTotal:!0},language:{searchPanes:{count:"{total} found",countFiltered:"{shown} / {total}"}}})});

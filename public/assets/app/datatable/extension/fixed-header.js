@@ -1,0 +1,1 @@
+"use strict";$(function(){var e=(1025<=$(window).width()?$("#sticky-header-desktop"):$("#sticky-header-mobile")).height();$("#datatable-1").DataTable({responsive:!0,fixedHeader:{header:!0,headerOffset:e}}),$("#datatable-2").DataTable({responsive:!0,fixedHeader:{header:!0,footer:!0,headerOffset:e}})});
