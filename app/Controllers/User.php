@@ -24,6 +24,7 @@ class User extends BaseController
 		}
 
 		$data['data_admin'] = $this->mainModel->myprofile();
+		$data['get_wf'] = $this->mainModel->get_wf();
 		return view('user/index', $data);
 	}
 
@@ -98,6 +99,7 @@ class User extends BaseController
 	}
 
 	// save waterflow
+	// ini dikirim dari nodemcu ke webserver
 	public function save_waterflow($id_token, $id_user, $waterflow)
 	{
 		$date = time();
