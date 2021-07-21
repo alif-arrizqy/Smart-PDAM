@@ -14,6 +14,14 @@ class mainModel extends Model
             ->where('id_user', session()->get('id_user'))->get();
     }
 
+    // untuk mendapatkan nilai waterflow dari tabel data_sensor
+    public function get_wf()
+    {
+        $id = session()->get('id_user');
+        $query = $this->db->query("SELECT * FROM data_sensor WHERE id_user = '$id' ORDER BY id_user = '$id' DESC LIMIT 1");
+        return $query;
+    }
+
     public function list_user()
     {
         $query = $this->db->query("SELECT * FROM users WHERE status='2' ORDER BY id_user ASC")->getResultArray();
@@ -67,11 +75,6 @@ class mainModel extends Model
         return $query;
     }
 
-    public function updateRelay($kirimdata)
-    {
-        $query = $this->db->table('relay')->where('id_token', $kirimdata['id_token'])->update($kirimdata);
-        return $query;
-    }
 
     // save data sensor waterflow
     public function add_data_waterflow($kirimdata)
