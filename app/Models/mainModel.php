@@ -14,14 +14,6 @@ class mainModel extends Model
             ->where('id_user', session()->get('id_user'))->get();
     }
 
-    // untuk mendapatkan nilai waterflow dari tabel data_sensor
-    public function get_wf()
-    {
-        $id = session()->get('id_user');
-        $query = $this->db->query("SELECT * FROM data_sensor WHERE id_user = '$id' ORDER BY id_user = '$id' DESC LIMIT 1");
-        return $query;
-    }
-
     public function list_user()
     {
         $query = $this->db->query("SELECT * FROM users WHERE status='2' ORDER BY id_user ASC")->getResultArray();
@@ -38,14 +30,57 @@ class mainModel extends Model
         return $query;
     }
 
-    // Token ------------------------------------------------------------------
-    // get kode otomatis
-    public function auto_kode()
+    // Monitoring -------------------------------------------------------
+
+    // cek relay aktif atau tidak
+    public function cek_relay($id_token)
     {
-        $query = $this->db->query("SELECT max(right(kode, 3)) as kd, max(right(id_token, 3)) AS idtok FROM token");
+        $query = $this->db->query("SELECT * FROM relay WHERE id_token = '$id_token'");
         return $query;
     }
 
+    // untuk mendapatkan nilai waterflow dari tabel data_sensor
+    public function get_wf($id_token, $id_user)
+    {
+        $query = $this->db->query("SELECT * FROM data_sensor WHERE id_token = '$id_token' AND id_user = '$id_user' ORDER BY id_token = '$id_token' DESC LIMIT 1");
+        return $query;
+    }
+
+    // get id token
+    public function get_idtoken()
+    {
+        $id = session()->get('id_user');
+        $query = $this->db->query("SELECT * FROM token WHERE id_user = '$id' ORDER BY id_user = '$id' DESC LIMIT 1");
+        return $query;
+    }
+
+
+    // get harga beli token
+    public function get_harga_beli($id_token, $id_user)
+    {
+        $query = $this->db->query("SELECT * FROM token WHERE id_token = '$id_token' 
+        AND id_user = '$id_user' ORDER BY id_token = '$id_token' DESC LIMIT 1");
+        return $query;
+    }
+
+    // get jumlah keseluruhan waterflow per idtoken
+    public function get_jumlah_wf($id_token, $id_user)
+    {
+        $query = $this->db->query("SELECT SUM(waterflow) AS total_wf FROM data_sensor 
+        WHERE id_token = '$id_token' AND id_user = '$id_user'");
+        return $query;
+    }
+
+    // get jumlah keseluruhan waterflow per bulan
+    public function get_jumlah_wf_bulan($bulan, $id_user)
+    {
+        $query = $this->db->query("SELECT SUM(waterflow) AS total_wf_bulan FROM data_sensor 
+        WHERE bulan = '$bulan' AND id_user = '$id_user'");
+        return $query;
+    }
+
+
+    // Token ------------------------------------------------------------------
     public function addToken($kirimdata)
     {
         $query = $this->db->table('token')->insert($kirimdata);
@@ -80,6 +115,21 @@ class mainModel extends Model
     public function add_data_waterflow($kirimdata)
     {
         $query = $this->db->table('data_sensor')->insert($kirimdata);
+        return $query;
+    }
+
+    // cek data di tabel rekap udah atau belum
+    public function cek_rekap_wf($id_token, $id_user)
+    {
+        $query = $this->db->query("SELECT * FROM rekap_data 
+        WHERE id_token = '$id_token' AND id_user = '$id_user' LIMIT 1");
+        return $query->getNumRows();
+    }
+
+    // save data idtoken iduser bulan ke tabel rekap
+    function add_rekap_wf($kirimdata2)
+    {
+        $query = $this->db->table('rekap_data')->insert($kirimdata2);
         return $query;
     }
 

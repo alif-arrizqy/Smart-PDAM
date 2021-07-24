@@ -52,7 +52,6 @@
                         <li class="nav-item" data-toggle="header-tab"><a href="<?= base_url('User') ?>" class="nav-link">Dashboard</a></li>
                         <li class="nav-item" data-toggle="header-tab"><a href="<?= base_url('Token') ?>" class="nav-link">Isi Ulang Token</a></li>
                         <li class="nav-item" data-toggle="header-tab"><a href="<?= base_url('Laporan') ?>" class="nav-link">Laporan PAM</a></li>
-
                     </ul>
                 </div>
             </div>

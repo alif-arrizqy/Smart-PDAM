@@ -41,7 +41,9 @@ $routes->get('/Manage-user', 'Pages::manage_user');
 
 // User
 $routes->get('/Login', 'Login::index');
+$routes->get('/User/direct_login', 'User::direct_login');
 $routes->get('/User', 'User::index');
+$routes->get('/User/monitoring/(:segment)/(:segment)', 'User::monitoring/$1/$2');
 $routes->get('/Token', 'User::token');
 $routes->get('/User/save_token/', 'User::save_token');
 $routes->get('/User/find_kode/(:segment)', 'User::find_kode/$1');
