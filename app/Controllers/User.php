@@ -56,7 +56,7 @@ class User extends BaseController
 			session()->setFlashdata('gagal', 'Anda belum logion !');
 			return redirect()->to(base_url('/Login'));
 		}
-
+		
 		$data['get_idtoken'] = $this->mainModel->get_idtoken();
 		return view('user/index', $data);
 	}
@@ -113,13 +113,21 @@ class User extends BaseController
 		}
 	}
 
+	// view token per bulan
+	public function token_bulanan($id_token)
+	{
+		$date = time();
+		$bulan = Date("M", $date);
+		$data['token_bulanan'] = $this->mainModel->getTokenBulanan($id_token, $bulan);
+		return view('user/laporan_air', $data);
+	}
+
 	// relay
 	public function find_kode($kode)
 	{
 		$data['get_kode'] = $this->mainModel->findKode($kode);
 		return view('user/find_kode', $data);
 	}
-
 
 	public function relay_aktif($id_token, $id_user, $relay_status)
 	{
@@ -130,6 +138,14 @@ class User extends BaseController
 		return view('user/relay_aktif', $data);
 	}
 
+	public function tutup_keran($id_token, $relay)
+	{
+		$token_id = $id_token;
+		$relay_mati = $relay;
+		$this->mainModel->sendRelayMati($token_id, $relay_mati);
+		return redirect()->to('/User');
+	}
+
 	// save waterflow
 	// ini dikirim dari nodemcu ke webserver
 	public function save_waterflow($id_token, $id_user, $waterflow)
@@ -137,7 +153,8 @@ class User extends BaseController
 		$date = time();
 		$kirimdata['id_token'] = $id_token;
 		$kirimdata['id_user'] = $id_user;
-		$kirimdata['waterflow'] = $waterflow;
+		$liter = $waterflow / 1000;
+		$kirimdata['waterflow'] = $liter;
 		$kirimdata['tanggal'] = date("Y-m-d", $date);
 		$kirimdata['bulan'] = date("M", $date);
 

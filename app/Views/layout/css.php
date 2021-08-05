@@ -8,7 +8,6 @@
     gtag('js', new Date());
     gtag('config', 'G-XY1VQKQHG4');
 </script>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&amp;family=Roboto+Mono&amp;display=swap" rel="stylesheet">
 <link href="<?= base_url('public/assets/build/styles/ltr-core.css') ?>" rel="stylesheet">
 <link href="<?= base_url('public/assets/build/styles/ltr-vendor.css') ?>" rel="stylesheet">

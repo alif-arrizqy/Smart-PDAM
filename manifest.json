@@ -1,0 +1,17 @@
+{
+    "name": "Smart PDAM",
+    "short_name": "Smart PDAM",
+    "description": "Aplikasi Monitoring Pemakaian Air",
+    "background_color": "#ffffff",
+    "theme_color": "#4A90E2",
+    "display": "standalone",
+    "start_url": "/User",
+    "icons": [
+        {
+            "src": "public/assets/images/water-tank.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        } 
+    ]  
+}

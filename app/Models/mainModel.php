@@ -26,7 +26,8 @@ class mainModel extends Model
         INNER JOIN regencies AS c ON a.regency_id=c.regency_id
         INNER JOIN districts AS d ON a.district_id=d.district_id
         INNER JOIN villages AS e ON a.villages_id=e.villages_id
-        WHERE b.provinces_id='$provinces_id' AND c.regency_id='$regency_id' AND d.district_id='$district_id' AND e.villages_id='$villages_id' ORDER BY b.name,c.name,d.name,e.name ASC");
+        WHERE b.provinces_id='$provinces_id' AND c.regency_id='$regency_id' AND d.district_id='$district_id' 
+        AND e.villages_id='$villages_id' ORDER BY b.name,c.name,d.name,e.name ASC");
         return $query;
     }
 
@@ -87,6 +88,15 @@ class mainModel extends Model
         return $query;
     }
 
+    // get data token per bulan
+    public function getTokenBulanan($id_token, $bulan)
+    {
+        $query = $this->db->query("SELECT a.*, b.* FROM token AS a INNER JOIN rekap_data AS b
+        ON a.id_token = b.id_token
+        WHERE a.id_token = '$id_token' AND a.bulan='$bulan' ORDER BY a.id_token = '$id_token'")->getResultArray();
+        return $query;
+    }
+
 
     // relay ----------------------------------------------------------------
     public function findKode($kirimdata)
@@ -107,6 +117,13 @@ class mainModel extends Model
     {
         $query = $this->db->query("SELECT * FROM relay 
         WHERE id_token='$token_id' AND id_user='$user_id' AND relay_status='$relay_akt'");
+        return $query;
+    }
+
+    // cari update relay jadi 0
+    public function sendRelayMati($token_id, $relay_mati)
+    {
+        $query = $this->db->query("UPDATE relay SET relay_status = '$relay_mati' WHERE id_token = '$token_id'");
         return $query;
     }
 

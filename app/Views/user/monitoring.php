@@ -86,7 +86,7 @@ if ($sisa_air <= $batas) {
                                                 </div>
                                             </div>
                                             <h2 class="widget9-highlight widget8-highlight-md text-primary">
-                                                <?= number_format($jml_air_beli); ?> ml</h2>
+                                                <?= number_format($jml_air_beli); ?> L</h2>
                                             <h6 class="widget9-title">Jumlah Air yang Di Beli</h6>
                                         </div>
                                     </div>
@@ -104,7 +104,7 @@ if ($sisa_air <= $batas) {
                                                 </div>
                                             </div>
                                             <h2 class="widget9-highlight widget8-highlight-md text-primary">
-                                                <?php echo 0 ?> ml</h4>
+                                                <?php echo 0 ?> L</h4>
                                                 <h6 class="widget9-title">Pemakaian Air Saat Ini</h6>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@ if ($sisa_air <= $batas) {
                                             </div>
                                             <h2 class="widget9-highlight widget8-highlight-md text-primary">
                                                 <?php echo 0 ?>
-                                                ml</h4>
+                                                L</h4>
                                                 <h6 class="widget9-title">Sisa Air Saat Ini</h6>
                                         </div>
                                     </div>
@@ -166,7 +166,7 @@ if ($sisa_air <= $batas) {
                                                 </div>
                                             </div>
                                             <h2 class="widget9-highlight widget8-highlight-md text-primary">
-                                                <?= number_format($jml_air_beli); ?> ml</h2>
+                                                <?= number_format($jml_air_beli); ?> L</h2>
                                             <h6 class="widget9-title">Jumlah Air yang Di Beli</h6>
                                         </div>
                                     </div>
@@ -189,7 +189,7 @@ if ($sisa_air <= $batas) {
                                                 } else {
                                                     echo number_format($jml_air_skrg);
                                                 }
-                                                ?> ml</h4>
+                                                ?> L</h4>
                                                 <h6 class="widget9-title">Pemakaian Air Saat Ini</h6>
                                         </div>
                                     </div>
@@ -213,7 +213,7 @@ if ($sisa_air <= $batas) {
                                                     echo number_format($sisa_air);
                                                 }
                                                 ?>
-                                                ml</h4>
+                                                L</h4>
                                                 <h6 class="widget9-title">Sisa Air Saat Ini</h6>
                                         </div>
                                     </div>

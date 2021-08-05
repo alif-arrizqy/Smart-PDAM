@@ -44,15 +44,18 @@ $routes->get('/Login', 'Login::index');
 $routes->get('/User/direct_login', 'User::direct_login');
 $routes->get('/User', 'User::index');
 $routes->get('/User/monitoring/(:segment)/(:segment)', 'User::monitoring/$1/$2');
+$routes->get('/User/tutup_keran/(:segment)', 'User::tutup_keran/$1');
+// Token
 $routes->get('/Token', 'User::token');
 $routes->get('/User/save_token/', 'User::save_token');
 $routes->get('/User/find_kode/(:segment)', 'User::find_kode/$1');
+$routes->get('/User/tutup_keran/(:segment)/(:segment)', 'User::tutup_keran/$1/$2');
 $routes->get('/User/relay_aktif/(:segment)/(:segment)/(:segment)', 'User::relay_aktif/$1/$2/$3');
-
 $routes->get('/User/save_waterflow/(:segment)/(:segment)/(:segment)', 'User::save_waterflow/$1/$2/$3');
+// Laporan
+$routes->get('/Laporan/(:segment)', 'User::token_bulanan/$1');
 
 
-$routes->get('/Laporan', 'User::laporan_pam');
 
 // di alatnya
 // get kode token dari alat
