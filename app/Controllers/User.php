@@ -37,6 +37,8 @@ class User extends BaseController
 
 		$date = time();
 		$bulan = date("M", $date);
+		// untuk get nama dan chat id user
+		$data['user_data'] = $this->mainModel->myprofile();
 		// cek relay aktif atau tidak
 		$data['cek_relay'] = $this->mainModel->cek_relay($id_token);
 		// untuk realtime data wf
