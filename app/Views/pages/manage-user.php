@@ -8,6 +8,11 @@
                     <div class="portlet-header portlet-header-bordered">
                         <div class="portlet-icon"><i class="fa fa-users"></i></div>
                         <h3 class="portlet-title">Table User</h3>
+                        <a href="<?= base_url('/AddUser/') ?>">
+                            <button class="btn btn-outline-success font-w-600 my-auto text-nowrap ml-auto">
+                                <i class="fa fa-plus"></i> Add User
+                            </button>
+                        </a>
                     </div>
                     <div class="portlet-body">
                         <table id="datatable-1" class="table table-bordered table-striped table-hover nowrap">

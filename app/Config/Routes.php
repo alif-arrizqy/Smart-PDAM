@@ -38,6 +38,7 @@ $routes->get('/Administrator', 'Login::administrator');
 $routes->get('/Home', 'Pages::index');
 $routes->get('/Profile/', 'Pages::profile');
 $routes->get('/Manage-user', 'Pages::manage_user');
+$routes->get('/AddUser', 'Pages::add_user');
 
 // User
 $routes->get('/Login', 'Login::index');

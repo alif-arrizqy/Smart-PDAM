@@ -135,7 +135,7 @@ if ($bln == 'Dec') {
                                                 <h6 class="widget9-title">Relay Status: Mati</h6>
                                                 <div class="rich-list-append">
                                                     <a href="<?= base_url('User/tutup_keran/' . $id_token . '/' . $relay) ?>">
-                                                        <button class="btn btn-label-danger">Tutup Keran</button>
+                                                        <button class="btn btn-label-danger">Buka Keran</button>
                                                 </div>
                                             <?php }
                                             // kondisi jika belum beli token

@@ -20,14 +20,20 @@ class mainModel extends Model
         return $query;
     }
 
-    public function detail_user($provinces_id, $regency_id, $district_id, $villages_id)
+    // public function detail_user($provinces_id, $regency_id, $district_id, $villages_id)
+    // {
+    //     $query = $this->db->query("SELECT a.*, b.*, c.*, d.*, e.* FROM users AS a INNER JOIN provinces AS b ON a.`provinces_id`=b.`provinces_id` 
+    //     INNER JOIN regencies AS c ON a.regency_id=c.regency_id
+    //     INNER JOIN districts AS d ON a.district_id=d.district_id
+    //     INNER JOIN villages AS e ON a.villages_id=e.villages_id
+    //     WHERE b.provinces_id='$provinces_id' AND c.regency_id='$regency_id' AND d.district_id='$district_id' 
+    //     AND e.villages_id='$villages_id' ORDER BY b.name,c.name,d.name,e.name ASC");
+    //     return $query;
+    // }
+
+    public function saveUser($kirimdata)
     {
-        $query = $this->db->query("SELECT a.*, b.*, c.*, d.*, e.* FROM users AS a INNER JOIN provinces AS b ON a.`provinces_id`=b.`provinces_id` 
-        INNER JOIN regencies AS c ON a.regency_id=c.regency_id
-        INNER JOIN districts AS d ON a.district_id=d.district_id
-        INNER JOIN villages AS e ON a.villages_id=e.villages_id
-        WHERE b.provinces_id='$provinces_id' AND c.regency_id='$regency_id' AND d.district_id='$district_id' 
-        AND e.villages_id='$villages_id' ORDER BY b.name,c.name,d.name,e.name ASC");
+        $query = $this->db->table('users')->insert($kirimdata);
         return $query;
     }
 
