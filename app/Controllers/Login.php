@@ -70,6 +70,16 @@ class Login extends BaseController
 		}
 	}
 
+	public function logout_administrator()
+	{
+		session()->remove('username');
+		session()->remove('fullname');
+		session()->remove('user_image');
+		session()->remove('status');
+
+		session()->setFlashdata('sukses', 'Anda telah berhasil logout');
+		return redirect()->to(base_url('/Administrator'));
+	}
 	public function logout()
 	{
 		session()->remove('username');
