@@ -44,9 +44,9 @@ class User extends BaseController
 		// untuk realtime data wf
 		$data['get_wf'] = $this->mainModel->get_wf($id_token, $id_user);
 		// untuk get pembelian token
-		$data['get_harga'] = $this->mainModel->get_harga_beli($id_token, $id_user);
+		$data['get_harga'] = $this->mainModel->get_harga_beli($bulan, $id_user);
 		// untuk total pemakaian wf per idtoken
-		$data['get_jumlah_wf'] = $this->mainModel->get_jumlah_wf($id_token, $id_user);
+		// $data['get_jumlah_wf'] = $this->mainModel->get_jumlah_wf($id_token, $id_user);
 		// untuk total pemakaian wf per bulan
 		$data['get_jumlah_bulan'] = $this->mainModel->get_jumlah_wf_bulan($bulan, $id_user);
 		return view('user/monitoring', $data);
@@ -116,11 +116,11 @@ class User extends BaseController
 	}
 
 	// view token per bulan
-	public function token_bulanan($id_token)
+	public function token_bulanan($id_user, $bulan)
 	{
 		$date = time();
 		$bulan = Date("M", $date);
-		$data['token_bulanan'] = $this->mainModel->getTokenBulanan($id_token, $bulan);
+		$data['token_bulanan'] = $this->mainModel->getTokenBulanan($id_user, $bulan);
 		return view('user/laporan_air', $data);
 	}
 

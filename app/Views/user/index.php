@@ -49,12 +49,14 @@ if ($bln == 'Dec') {
                                         </div>
                                         <div class="rich-list-append">
                                             <?php
+                                            $date = time();
+                                            $bulan = date("M", $date);
                                             foreach ($get_idtoken->getResult() as $rs) {
                                                 $id_token = $rs->id_token;
                                                 $id_user = $rs->id_user;
                                                 if ($id_token != NULL && $id_user != NULL) { ?>
                                                     <div class="rich-list-append">
-                                                        <a href="<?= base_url('User/monitoring/' . $id_token . '/' . $id_user) ?>">
+                                                        <a href="<?= base_url('User/monitoring/' . $id_token . '/' . $id_user . '/' . $bulan) ?>">
                                                             <button class="btn btn-label-primary">Monitoring Air</button>
                                                         </a>
                                                     </div>
@@ -171,7 +173,7 @@ if ($bln == 'Dec') {
                                                 if ($id_token != NULL) {
                                             ?>
                                                     <div class="rich-list-append">
-                                                        <a href="<?= base_url('Laporan/' . $id_token) ?>">
+                                                        <a href="<?= base_url('Laporan/' . $id_user . '/' . $bulan) ?>">
                                                             <button class="btn btn-label-primary">Laporan Air Bulan <?= $bulan ?></button>
                                                         </a>
                                                     </div>

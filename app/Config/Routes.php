@@ -44,7 +44,7 @@ $routes->get('/AddUser', 'Pages::add_user');
 $routes->get('/Login', 'Login::index');
 $routes->get('/User/direct_login', 'User::direct_login');
 $routes->get('/User', 'User::index');
-$routes->get('/User/monitoring/(:segment)/(:segment)', 'User::monitoring/$1/$2');
+$routes->get('/User/monitoring/(:segment)/(:segment)/(:segment)', 'User::monitoring/$1/$2/$3');
 $routes->get('/User/tutup_keran/(:segment)', 'User::tutup_keran/$1');
 // Token
 $routes->get('/Token', 'User::token');
@@ -54,7 +54,7 @@ $routes->get('/User/tutup_keran/(:segment)/(:segment)', 'User::tutup_keran/$1/$2
 $routes->get('/User/relay_aktif/(:segment)/(:segment)/(:segment)', 'User::relay_aktif/$1/$2/$3');
 $routes->get('/User/save_waterflow/(:segment)/(:segment)/(:segment)', 'User::save_waterflow/$1/$2/$3');
 // Laporan
-$routes->get('/Laporan/(:segment)', 'User::token_bulanan/$1');
+$routes->get('/Laporan/(:segment)/(:segment)', 'User::token_bulanan/$1/$2');
 
 
 

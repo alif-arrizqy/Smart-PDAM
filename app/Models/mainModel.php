@@ -57,16 +57,16 @@ class mainModel extends Model
     public function get_idtoken()
     {
         $id = session()->get('id_user');
-        $query = $this->db->query("SELECT * FROM token WHERE id_user = '$id' ORDER BY id_user = '$id' DESC LIMIT 1");
+        $query = $this->db->query("SELECT * FROM token WHERE id_user = '$id' ORDER BY id DESC LIMIT 1");
         return $query;
     }
 
 
     // get harga beli token
-    public function get_harga_beli($id_token, $id_user)
+    public function get_harga_beli($bulan, $id_user)
     {
-        $query = $this->db->query("SELECT * FROM token WHERE id_token = '$id_token' 
-        AND id_user = '$id_user' ORDER BY id_token = '$id_token' DESC LIMIT 1");
+        $query = $this->db->query("SELECT id_token, id_user, SUM(harga) AS hrg, SUM(jumlah_air) AS jml_air FROM token WHERE id_user='$id_user'
+        AND bulan='$bulan'");
         return $query;
     }
 
@@ -95,11 +95,10 @@ class mainModel extends Model
     }
 
     // get data token per bulan
-    public function getTokenBulanan($id_token, $bulan)
+    public function getTokenBulanan($id_user, $bulan)
     {
         $query = $this->db->query("SELECT a.*, b.* FROM token AS a INNER JOIN rekap_data AS b
-        ON a.id_token = b.id_token
-        WHERE a.id_token = '$id_token' AND a.bulan='$bulan' ORDER BY a.id_token = '$id_token'")->getResultArray();
+        ON a.id_token = b.id_token WHERE a.id_user = '$id_user' AND a.bulan='$bulan'")->getResultArray();
         return $query;
     }
 
@@ -142,10 +141,10 @@ class mainModel extends Model
     }
 
     // cek data di tabel rekap udah atau belum
-    public function cek_rekap_wf($id_token, $id_user)
+    public function cek_rekap_wf($bulan, $id_user)
     {
         $query = $this->db->query("SELECT * FROM rekap_data 
-        WHERE id_token = '$id_token' AND id_user = '$id_user' LIMIT 1");
+        WHERE bulan = '$bulan' AND id_user = '$id_user' LIMIT 1");
         return $query->getNumRows();
     }
 

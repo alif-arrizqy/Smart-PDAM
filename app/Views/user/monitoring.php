@@ -14,23 +14,24 @@ foreach ($cek_relay->getResult() as $rs) {
 
 // pembelian token
 foreach ($get_harga->getResult() as $rs) {
-    $harga = $rs->harga;
-}
-
-// jumlah air yang dibeli
-foreach ($get_harga->getResult() as $rs) {
-    $jml_air_beli = $rs->jumlah_air;
+    $harga = $rs->hrg;
+    $jml_air_beli = $rs->jml_air;
     $id_token = $rs->id_token;
     $id_user = $rs->id_user;
 }
 
+// jumlah air yang dibeli
+// foreach ($get_harga->getResult() as $rs) {
+    
+// }
+
 // pemakaian air saat ini
-foreach ($get_jumlah_wf->getResult() as $rs) {
-    $jml_air_skrg = $rs->total_wf;
-}
+// foreach ($get_jumlah_wf->getResult() as $rs) {
+//     $jml_air_skrg = $rs->total_wf;
+// }
 
 // sisa air saat ini
-$sisa_air = $jml_air_beli - $jml_air_skrg;
+$sisa_air = $jml_air_beli - $jml_air_beli;
 // rekap data wf
 foreach ($get_jumlah_bulan->getResult() as $rs) {
     $jml_air = $rs->total_wf_bulan;
@@ -59,8 +60,6 @@ $batas = (10 / 100) * $jml_air_beli;
 <div class="content">
     <div class="container-fluid">
         <?php if ($relay_status == 0) { ?>
-            <!-- modal -->
-
             <div class="row">
                 <div class="col-xl-12">
                     <div class="row portlet-row-fill-sm">
