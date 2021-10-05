@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <a href="<?= base_url('login/logout') ?>">
+            <a href="<?= base_url('login/logout_administrator') ?>">
                 <button class="btn btn-label-danger btn-lg btn-block">Log out</button>
             </a>
         </div>

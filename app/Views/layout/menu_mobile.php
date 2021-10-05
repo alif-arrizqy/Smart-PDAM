@@ -34,6 +34,13 @@
                         <span class="menu-item-text">Management User</span>
                     </a>
                 </div>
+                <div class="menu-item"><a href="<?= base_url('login/logout_administrator') ?>" class="menu-item-link">
+                        <div class="menu-item-icon">
+                            <i class="fa fa-sign-out-alt"></i>
+                        </div>
+                        <span class="menu-item-text">Logout</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -63,9 +70,16 @@
                 </div>
                 <div class="menu-item"><a href="<?= base_url('Token') ?>" class="menu-item-link">
                         <div class="menu-item-icon">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-redo-alt"></i>
                         </div>
                         <span class="menu-item-text">Isi Ulang Token</span>
+                    </a>
+                </div>
+                <div class="menu-item"><a href="<?= base_url('login/logout') ?>" class="menu-item-link">
+                        <div class="menu-item-icon">
+                            <i class="fa fa-sign-out-alt"></i>
+                        </div>
+                        <span class="menu-item-text">Logout</span>
                     </a>
                 </div>
             </div>
