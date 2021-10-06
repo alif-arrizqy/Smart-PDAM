@@ -29,7 +29,33 @@ if ($bln == 'Dec') {
                     <div class="portlet-header portlet-header-bordered">
                         <div class="portlet-icon"><i class="fa fa-user"></i></div>
                         <h3 class="portlet-title">Welcome Back <?= session()->get('fullname') ?></h3>
+                        <?php
+                        foreach ($get_idtoken->getResult() as $rs) {
+                            $id_token = $rs->id_token;
 
+                            $db      = \Config\Database::connect();
+                            $query = $db->query("SELECT * FROM relay WHERE id_token = '$id_token' ");
+                            foreach ($query->getResultArray() as $hs) {
+                                $relay_status = $hs['relay_status'];
+                                if ($relay_status == 0) {
+                        ?>
+                                    <div class="alert alert-label-success fade show mb-0">
+                                        <div class="alert-icon"><i class="fa fa-cog"></i></div>
+                                        <div class="alert-content">
+                                            <h4 class="alert-heading">Pengisian Token Berhasil!</h4>
+                                            <p>
+                                                Masukkan kode token berikut: <b><?= $id_token ?></b> pada alat smart pdam Anda.
+                                            </p>
+                                            <hr>
+                                        </div>
+                                        <button type="button" class="btn btn-text-danger btn-icon alert-dismiss" data-dismiss="alert">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                        <?php } else if ($relay_status == 1) {
+                                }
+                            }
+                        } ?>
                     </div>
                 </div>
             </div>
