@@ -46,7 +46,7 @@ class User extends BaseController
 		// untuk get pembelian token
 		$data['get_harga'] = $this->mainModel->get_harga_beli($bulan, $id_user);
 		// untuk total pemakaian wf per idtoken
-		// $data['get_jumlah_wf'] = $this->mainModel->get_jumlah_wf($id_token, $id_user);
+		$data['get_jumlah_wf'] = $this->mainModel->get_jumlah_wf($id_token, $id_user);
 		// untuk total pemakaian wf per bulan
 		$data['get_jumlah_bulan'] = $this->mainModel->get_jumlah_wf_bulan($bulan, $id_user);
 		return view('user/monitoring', $data);
@@ -75,12 +75,12 @@ class User extends BaseController
 	{
 		$date = time();
 		// perhitungan setan kubik 
-		$kubik1 = 8000;
-		$kubik2 = 10000;
+		$kubik1 = 45000;
+		$kubik2 = 57000;
 		$hasilk1k2 = $kubik1 + $kubik2; //18k
 		$harga = $this->request->getPost('inputHarga'); //min. 20k
 		$hasilHarga = $harga - $hasilk1k2;
-		$kubik3 = $hasilHarga / 1100; //meter kubik
+		$kubik3 = $hasilHarga / 6000; //meter kubik
 
 		// hitung kubik
 		$hasilKubik = $kubik3 + 20;
@@ -160,11 +160,12 @@ class User extends BaseController
 		$kirimdata['tanggal'] = date("Y-m-d", $date);
 		$kirimdata['bulan'] = date("M", $date);
 
+		$bulan = date("M", $date);
 		$kirimdata2['id_token'] = $id_token;
 		$kirimdata2['id_user'] = $id_user;
 		$kirimdata2['bulan'] = date("M", $date);
 
-		$cek_id = $this->mainModel->cek_rekap_wf($id_token, $id_user);
+		$cek_id = $this->mainModel->cek_rekap_wf($bulan, $id_user);
 		if ($cek_id <= 0) {
 			$this->mainModel->add_data_waterflow($kirimdata);
 			$this->mainModel->add_rekap_wf($kirimdata2);

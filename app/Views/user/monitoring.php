@@ -26,12 +26,12 @@ foreach ($get_harga->getResult() as $rs) {
 // }
 
 // pemakaian air saat ini
-// foreach ($get_jumlah_wf->getResult() as $rs) {
-//     $jml_air_skrg = $rs->total_wf;
-// }
+foreach ($get_jumlah_wf->getResult() as $rs) {
+    $jml_air_skrg = $rs->total_wf;
+}
 
 // sisa air saat ini
-$sisa_air = $jml_air_beli - $jml_air_beli;
+$sisa_air = $jml_air_beli - $jml_air_skrg;
 // rekap data wf
 foreach ($get_jumlah_bulan->getResult() as $rs) {
     $jml_air = $rs->total_wf_bulan;
@@ -216,6 +216,7 @@ $batas = (10 / 100) * $jml_air_beli;
                                                     // tampilkan nilai 0
                                                     echo 0;
                                                     if ($sisa_air > 0) {
+                                                        echo number_format($sisa_air);
                                                         // notifikasi ke telegram
                                                         // atur waktu
                                                         date_default_timezone_set('Asia/Jakarta');
@@ -250,6 +251,7 @@ $batas = (10 / 100) * $jml_air_beli;
                                                         header("Refresh: 300; URL=$url");
                                                         redirect()->to('/');
                                                     } else if ($sisa_air < 0) {
+                                                        echo number_format($sisa_air);
                                                         // notifikasi ke telegram
                                                         // atur waktu
                                                         date_default_timezone_set('Asia/Jakarta');

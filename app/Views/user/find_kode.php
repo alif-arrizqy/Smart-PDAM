@@ -13,7 +13,7 @@ foreach ($get_kode->getResult() as $rs) {
     $st = $dbs->table('relay')->where('id_token', $id_token)->update($ry);
     // redirect ke halaman relay_aktif
     // dan juga mengirimkan hasilnya ke nodemcu
-    $url = base_url('/User/relay_aktif/' . $id_token . '/' . $id_user . '/' . $relay_status);
-    header("refresh:5; url=$url");
+    // $url = base_url('/User/relay_aktif/' . $id_token . '/' . $id_user . '/' . $relay_status);
+    // header("refresh:5; url=$url");
 }
 ?>

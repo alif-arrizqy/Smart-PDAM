@@ -144,7 +144,7 @@ class mainModel extends Model
     public function cek_rekap_wf($bulan, $id_user)
     {
         $query = $this->db->query("SELECT * FROM rekap_data 
-        WHERE bulan = '$bulan' AND id_user = '$id_user' LIMIT 1");
+        WHERE bulan = '$bulan' AND id_user = '$id_user'");
         return $query->getNumRows();
     }
 
